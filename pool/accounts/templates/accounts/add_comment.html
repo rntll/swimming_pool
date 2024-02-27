@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить комментарий</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Центрируем текст на странице */
+        }
+
+        form {
+            width: 50%; /* Задаем ширину формы */
+            margin: 0 auto; /* Центрируем форму по горизонтали */
+            padding: 20px; /* Добавляем внутренние отступы для формы */
+            border: 1px solid #ccc; /* Добавляем рамку вокруг формы */
+            border-radius: 5px; /* Закругляем углы рамки */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Добавляем тень для формы */
+        }
+
+        button {
+            margin-top: 10px; /* Добавляем отступ над кнопкой */
+            padding: 10px 20px; /* Задаем внутренние отступы для кнопки */
+            background-color: #007bff; /* Устанавливаем цвет фона кнопки */
+            color: #fff; /* Устанавливаем цвет текста кнопки */
+            border: none; /* Убираем границу кнопки */
+            border-radius: 3px; /* Закругляем углы кнопки */
+            cursor: pointer; /* Делаем курсор указателем при наведении на кнопку */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Изменяем цвет фона кнопки при наведении */
+        }
+    </style>
+</head>
+<body>
+    <h1>Добавить комментарий</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Добавить комментарий</button>
+    </form>
+</body>
+</html>

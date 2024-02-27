@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Размещаем header, main и footer внутри flex-контейнера */
+    flex-direction: column; /* Основная организация - вертикальная */
+    min-height: 100vh; /* Задаем минимальную высоту, чтобы футер всегда оставался внизу */
+}
+
+/* Header Styling */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Main Styling */
+main {
+    display: flex;
+    flex: 1; /* Растягиваем main на всю доступную высоту */
+}
+
+/* Sidebar Styling */
+aside {
+    width: 250px;
+    background-color: #333333;
+    color: #FFFFFF;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    position: fixed; /* Делаем боковую панель фиксированной */
+    height: 100%; /* Заполняем всю доступную высоту */
+}
+
+aside nav {
+    padding-top: 20px;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+/* Content Styling */
+.content {
+    margin-left: 270px; /* Учитываем ширину боковой панели */
+    padding: 20px;
+    text-align: center; /* Выравниваем контент по центру */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #fff;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    margin-top: auto; /* Footer прижимается к нижнему краю */
+}
+
+
+
+

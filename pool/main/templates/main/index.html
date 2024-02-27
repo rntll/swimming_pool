@@ -1,0 +1,53 @@
+{% extends 'main/layout.html' %}
+
+{% load static %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <aside>
+
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}" class="nav-link">Главная</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'schedule' %}" class="nav-link">Расписание</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'instructors' %}" class="nav-link">Инструкторы</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:review_page' %}" class="nav-link">Отзывы</a>
+                    </li>
+                    <li class="button-container">
+                        <a href="{% url 'accounts:login' %}">
+                            <button class="custom-button-light"><i class="fas fa-user"></i> Личный кабинет</button>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="col-md-9">
+            <div class="features" style="text-align: center;">
+                <h2>Добро пожаловать в бассейн "Луч"!</h2>
+                <h2>Отличное место для занятий плаванием и релаксации.</h2>
+                <p>У нас имеется просторный внутренний бассейн для занятий в любое время года.</p>
+                <div class="pool-container">
+                    <div class="pool-form">
+                        <img src="{% static 'main/img/pool.jpg' %}" alt="внутренний бассейн" style="width: 300px; height: auto;">
+                        <p>Идеальное место для занятий плаванием в любое время года</p>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <a href="{% url 'accounts:signup' %}">
+                        <button class="btn custom-button-dark">Стать клиентом бассейна "Луч"</button>
+                    </a>
+                    <a href="{% url 'accounts:login' %}">
+                        <button class="btn custom-button-dark">Узнать подробности и расписание</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

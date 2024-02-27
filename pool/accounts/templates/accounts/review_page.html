@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-top: 20px;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #fff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Отзывы</h1>
+
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'accounts:review_page' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Оставить отзыв</button>
+        </form>
+    {% else %}
+        <p><a href="{% url 'accounts:signup' %}">Зарегистрируйтесь</a>, чтобы оставить отзыв.</p>
+    {% endif %}
+
+    <hr>
+
+    <h2>Все отзывы</h2>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <p>{{ review.text }}</p>
+                    <p>От: {{ review.user.username }}</p>
+                    <p>Опубликовано: {{ review.created_at }}</p>
+                    {% if user.is_superuser %}
+                        <a href="{% url 'accounts:add_comment' review.id %}">Добавить комментарий</a>
+                        <ul>
+                            {% for comment in review.comments.all %}
+                                <li>{{ comment.text }} - {{ comment.user.username }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Пока нет отзывов.</p>
+    {% endif %}
+</body>
+</html>

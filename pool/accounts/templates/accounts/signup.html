@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+
+{% block content %}
+  <style>
+    .signup-form {
+      width: 100%; /* Ширина формы */
+      margin: auto; /* Центрирование по горизонтали */
+      text-align: center; /* Выравнивание содержимого по центру */
+    }
+
+    .signup-form h2 {
+      margin-bottom: 20px; /* Отступ снизу для заголовка */
+    }
+
+    .signup-form button {
+      margin-top: 20px; /* Отступ сверху для кнопки */
+    }
+  </style>
+
+  <form class="signup-form" method="post">
+    {% csrf_token %}
+    <h2>Регистрация</h2>
+    {{ form.as_p }}
+    <button type="submit" class="custom-button-dark">Зарегистрироваться</button>
+  </form>
+{% endblock %}
